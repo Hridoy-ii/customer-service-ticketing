@@ -1,11 +1,14 @@
-import React from 'react';
 import TicketCard from '../ticketCard/TicketCard';
 
-const CustomerTickets = ({ tickets = [] }) => {
+const CustomerTickets = () => {
+    
+const tickets = [1, 2, 3, 4, 5];
+    
+
     return (
-        <div>
+        <div className="space-y-4">
             {tickets.map((ticket) => (
-                <TicketCard key={ticket.id} ticket={ticket} />
+                <TicketCard key={ticket} ticket={{ id: `#100${ticket}` }} />
             ))}
         </div>
     );
