@@ -1,32 +1,35 @@
 import { MdCalendarToday } from 'react-icons/md';
 
-const TicketCard = ({ ticket }) => {
+const TicketCard = ({ ticket, onClick }) => {
 
-
+    const { id, title, description, status, priority, assignedTo } = ticket;
 
     return (
-        <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+        <div
+            onClick={onClick}
+            className="bg-white cursor-pointer hover:shadow-violet-900 rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow">
             {/* Header with Title and Status */}
+
             <div className="flex justify-between items-start mb-3">
                 <h3 className="text-lg font-semibold text-gray-800 flex-1">
-                    {ticket.title}
+                    {title}
                 </h3>
                 <span
-                    className={`badge text-white gap-2 ${ticket.status === "Open"
+                    className={`badge text-white gap-2 ${status === "Open"
                         ? "badge-success"
-                        : ticket.status === "In Progress"
+                        : status === "In Progress"
                             ? "badge-warning"
                             : "badge-neutral"
                         }`}
                 >
                     <span className="w-2 h-2 bg-white rounded-full"></span>
-                    {ticket.status}
+                    {status}
                 </span>
             </div>
 
             {/* Description */}
             <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                {ticket.description}
+                {description}
             </p>
 
             {/* Footer with Details */}
@@ -34,20 +37,20 @@ const TicketCard = ({ ticket }) => {
                 <div className="flex items-center gap-4">
                     {/* Ticket ID */}
                     <div>
-                        <p className="text-gray-800 font-semibold">#{ticket.id}</p>
+                        <p className="text-gray-800 font-semibold">#{id}</p>
                     </div>
 
                     {/* Priority */}
                     <div>
                         <span className="text-red-500 font-semibold text-xs uppercase">
-                            {ticket.priority}
+                            {priority}
                         </span>
                     </div>
                 </div>
 
                 <div className="flex items-center gap-4 text-sm">
                     {/* Assigned To */}
-                    <span className="text-gray-600">{ticket.assignedTo}</span>
+                    <span className="text-gray-600">{assignedTo}</span>
 
                     {/* Date */}
                     <div className="flex items-center gap-1 text-gray-600">
