@@ -38,7 +38,7 @@ const Navbar = () => {
                         </li>
                     ))}
                 </ul>
-                <a className="btn  bg-gradient-to-r from-[#632EE3]  to-[#9F62F2]">+ New Ticket</a>
+                <a className="btn  bg-linear-to-r from-[#632EE3]  to-[#9F62F2]">+ New Ticket</a>
             </div>
             <div className="">
             </div>
