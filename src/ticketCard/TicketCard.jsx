@@ -7,7 +7,7 @@ const TicketCard = ({ ticket, onClick }) => {
     return (
         <div
             onClick={onClick}
-            className="bg-white cursor-pointer hover:shadow-violet-900 rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            className="bg-white cursor-pointer hover:shadow-gray-200 rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow">
             {/* Header with Title and Status */}
 
             <div className="flex justify-between items-start mb-3">

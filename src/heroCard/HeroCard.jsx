@@ -1,15 +1,17 @@
-import React, { use } from 'react';
 import leftBg from '../assets/vectorIMGleft.png';
 import rightBg from '../assets/vectorIMGRight.png';
 
-const HeroCard = ({ getTicketsData }) => {
+const HeroCard = ({ tickets }) => {
 
-    const ticketsData = use(getTicketsData);
-        const tickets = ticketsData.tickets;
-        const inProgressCount = tickets.filter(ticket => ticket.status === 'In Progress').length;
-        const resolvedCount = tickets.filter(ticket => ticket.status === 'Resolved').length;
+  const inProgressCount = tickets.filter(
+    ticket => ticket.status === "In Progress"
+  ).length;
 
-    return (
+  const resolvedCount = tickets.filter(
+    ticket => ticket.status === "Resolved"
+  ).length;
+
+  return (
         <div className="flex flex-col md:flex-row gap-4 py-4">
             {/* In-progress card */}
             <div className="relative flex-1 rounded-lg overflow-hidden shadow-lg bg-linear-to-r from-[#422AD5] to-[#9F62F2] text-white">

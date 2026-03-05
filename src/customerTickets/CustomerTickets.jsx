@@ -1,14 +1,10 @@
-import { use } from 'react';
-import TicketCard from '../ticketCard/TicketCard';
+import TicketCard from "../ticketCard/TicketCard";
 
-const CustomerTickets = ({ getTicketsData, handleTaskStatusUpdate }) => {
-
-    const ticketsData = use(getTicketsData);
-    const tickets = ticketsData.tickets;
-
+const CustomerTickets = ({ tickets, handleTaskStatusUpdate }) => {
 
     return (
         <div className="space-y-4">
+
             {tickets.map((ticket) => (
                 <TicketCard
                     key={ticket.id}
@@ -16,6 +12,7 @@ const CustomerTickets = ({ getTicketsData, handleTaskStatusUpdate }) => {
                     onClick={() => handleTaskStatusUpdate(ticket)}
                 />
             ))}
+
         </div>
     );
 };

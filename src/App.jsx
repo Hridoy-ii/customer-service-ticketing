@@ -4,26 +4,35 @@ import Footer from './footer/Footer'
 import HeroCard from './heroCard/HeroCard'
 import Navbar from './navbar/Navbar';
 import TicketStatuSection from './ticketStatusSection/TicketStatuSection'
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
-const getTicketsData = fetch('/tickets.json').then((response) => response.json());
 
 
 function App() {
 
-  console.log(getTicketsData);
+  const [tickets, setTickets] = useState([]);
 
+  useEffect(() => {
+    fetch("/tickets.json")
+      .then(res => res.json())
+      .then(data => setTickets(data.tickets));
+  }, []);
 
   return (
-    <div className="max-w-[90%] mx-auto">
-      <Navbar></Navbar>
-      <HeroCard getTicketsData={getTicketsData}></HeroCard>
-      <Suspense fallback={<span className="loading loading-bars loading-xl"></span>}>
-        <TicketStatuSection getTicketsData={getTicketsData}  ></TicketStatuSection>
-      </Suspense>
-      <Footer></Footer>
+    <div >
+      <div className="max-w-[94%] mx-auto">
+        <Navbar />
+
+        <HeroCard tickets={tickets} />
+
+        <TicketStatuSection
+          tickets={tickets}
+          setTickets={setTickets}
+        />
+      </div>
+      <Footer />
     </div>
-  )
+  );
 }
 
 export default App
