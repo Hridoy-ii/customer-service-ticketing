@@ -8,14 +8,19 @@ import TicketCard from './ticketCard/TicketCard'
 import { Suspense } from 'react'
 import TicketStatuSection from './ticketStatusSection/TicketStatuSection'
 
+const getTicketsData = fetch('/tickets.json').then((response) => response.json());
+
+
 function App() {
-  
+
+  console.log(getTicketsData);
+
 
   return (
     <div className="max-w-[90%] mx-auto">
       <Navbar></Navbar>
-      <HeroCard></HeroCard>
-      <TicketStatuSection></TicketStatuSection>
+      <HeroCard getTicketsData={getTicketsData}></HeroCard>
+      <TicketStatuSection getTicketsData={getTicketsData}  ></TicketStatuSection>
       <Footer></Footer>
     </div>
   )

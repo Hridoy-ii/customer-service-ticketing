@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { use } from 'react';
 import { MdCheckCircle } from 'react-icons/md';
 
-const TaskStatus = () => {
+const TaskStatus = ({ getTicketsData }) => {
+
+    const ticketsData = use(getTicketsData);
+    const ticket = ticketsData.tickets;
+    console.log(ticket);
+
     // Sample tasks data
     const tasks = [
         {

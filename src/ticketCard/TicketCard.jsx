@@ -1,7 +1,9 @@
-import React from 'react';
 import { MdCalendarToday } from 'react-icons/md';
 
 const TicketCard = ({ ticket }) => {
+
+
+
     return (
         <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow">
             {/* Header with Title and Status */}
@@ -9,7 +11,14 @@ const TicketCard = ({ ticket }) => {
                 <h3 className="text-lg font-semibold text-gray-800 flex-1">
                     {ticket.title}
                 </h3>
-                <span className="badge badge-success text-white gap-2">
+                <span
+                    className={`badge text-white gap-2 ${ticket.status === "Open"
+                        ? "badge-success"
+                        : ticket.status === "In Progress"
+                            ? "badge-warning"
+                            : "badge-neutral"
+                        }`}
+                >
                     <span className="w-2 h-2 bg-white rounded-full"></span>
                     {ticket.status}
                 </span>
@@ -25,8 +34,7 @@ const TicketCard = ({ ticket }) => {
                 <div className="flex items-center gap-4">
                     {/* Ticket ID */}
                     <div>
-                        <span className="text-gray-500 text-xs">Ticket ID</span>
-                        <p className="text-gray-800 font-semibold">{ticket.id}</p>
+                        <p className="text-gray-800 font-semibold">#{ticket.id}</p>
                     </div>
 
                     {/* Priority */}

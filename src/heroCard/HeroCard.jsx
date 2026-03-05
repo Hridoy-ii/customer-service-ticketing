@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { use } from 'react';
 import leftBg from '../assets/vectorIMGleft.png';
 import rightBg from '../assets/vectorIMGRight.png';
 
-const HeroCard = () => {
+const HeroCard = ({ getTicketsData }) => {
+
+    const ticketsData = use(getTicketsData);
+        const tickets = ticketsData.tickets;
+        const inProgressCount = tickets.filter(ticket => ticket.status === 'In Progress').length;
+        const resolvedCount = tickets.filter(ticket => ticket.status === 'Resolved').length;
+
     return (
         <div className="flex flex-col md:flex-row gap-4 py-4">
             {/* In-progress card */}
@@ -19,7 +25,7 @@ const HeroCard = () => {
                 />
                 <div className="relative flex flex-col items-center justify-center h-48">
                     <p className="text-lg">In-Progress</p>
-                    <p className="text-5xl font-bold">0</p>
+                    <p className="text-5xl font-bold">{inProgressCount}</p>
                 </div>
             </div>
 
@@ -37,7 +43,7 @@ const HeroCard = () => {
                 />
                 <div className="relative flex flex-col items-center justify-center h-48">
                     <p className="text-lg">Resolved</p>
-                    <p className="text-5xl font-bold">0</p>
+                    <p className="text-5xl font-bold">{resolvedCount}</p>
                 </div>
             </div>
         </div>
